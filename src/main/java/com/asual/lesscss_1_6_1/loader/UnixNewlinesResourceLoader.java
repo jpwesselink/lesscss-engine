@@ -12,31 +12,31 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_6_0.loader;
+package com.asual.lesscss_1_6_1.loader;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 
 /**
- * A {@link ResourceLoader} that loads JNDI resources.
+ * A delegating {@ResourceLoader} that removes \r characters
+ * from resource content, thus converting Windows newlines to Unix ones.
  * 
- * @author Tim Kingman
+ * @author Rafał Krzewski
  */
-public class JNDIResourceLoader extends StreamResourceLoader {
+public class UnixNewlinesResourceLoader implements ResourceLoader {
 
-	private static final String SCHEMA = "jndi";
+	private final ResourceLoader delegate;
 
-	@Override
-	protected String getSchema() {
-		return SCHEMA;
+	public UnixNewlinesResourceLoader(ResourceLoader delegate) {
+		this.delegate = delegate;
 	}
 
 	@Override
-	protected InputStream openStream(String path) throws IOException {
-		URL url = new URL(SCHEMA + ":" + path);
-		URLConnection conn = url.openConnection();
-		return conn.getInputStream();
+	public boolean exists(String path) throws IOException {
+		return delegate.exists(path);
+	}
+
+	@Override
+	public String load(String path, String charset) throws IOException {
+		return delegate.load(path, charset).replaceAll("\r", "");
 	}
 }

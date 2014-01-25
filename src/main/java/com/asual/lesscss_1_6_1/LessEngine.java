@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_6_0;
+package com.asual.lesscss_1_6_1;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,14 +34,14 @@ import org.mozilla.javascript.ScriptableObject;
 import org.mozilla.javascript.UniqueTag;
 import org.mozilla.javascript.tools.shell.Global;
 
-import com.asual.lesscss_1_6_0.loader.ChainedResourceLoader;
-import com.asual.lesscss_1_6_0.loader.ClasspathResourceLoader;
-import com.asual.lesscss_1_6_0.loader.CssProcessingResourceLoader;
-import com.asual.lesscss_1_6_0.loader.FilesystemResourceLoader;
-import com.asual.lesscss_1_6_0.loader.HTTPResourceLoader;
-import com.asual.lesscss_1_6_0.loader.JNDIResourceLoader;
-import com.asual.lesscss_1_6_0.loader.ResourceLoader;
-import com.asual.lesscss_1_6_0.loader.UnixNewlinesResourceLoader;
+import com.asual.lesscss_1_6_1.loader.ChainedResourceLoader;
+import com.asual.lesscss_1_6_1.loader.ClasspathResourceLoader;
+import com.asual.lesscss_1_6_1.loader.CssProcessingResourceLoader;
+import com.asual.lesscss_1_6_1.loader.FilesystemResourceLoader;
+import com.asual.lesscss_1_6_1.loader.HTTPResourceLoader;
+import com.asual.lesscss_1_6_1.loader.JNDIResourceLoader;
+import com.asual.lesscss_1_6_1.loader.ResourceLoader;
+import com.asual.lesscss_1_6_1.loader.UnixNewlinesResourceLoader;
 
 /**
  * @author Rostislav Hristov
@@ -85,9 +85,9 @@ public class LessEngine {
 			logger.debug("Initializing LESS Engine.");
 			ClassLoader classLoader = getClass().getClassLoader();
 			URL less = options.getLess();
-			URL env = classLoader.getResource("META-INF/1.6.0/env.js");
-			URL engine = classLoader.getResource("META-INF/1.6.0/engine.js");
-			URL cssmin = classLoader.getResource("META-INF/1.6.0/cssmin.js");
+			URL env = classLoader.getResource("META-INF/1.6.1/env.js");
+			URL engine = classLoader.getResource("META-INF/1.6.1/engine.js");
+			URL cssmin = classLoader.getResource("META-INF/1.6.1/cssmin.js");
 			Context cx = Context.enter();
 			logger.debug("Using implementation version: "
 					+ cx.getImplementationVersion());

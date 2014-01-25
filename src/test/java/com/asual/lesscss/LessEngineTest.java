@@ -28,9 +28,9 @@ import java.net.URL;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.asual.lesscss_1_6_0.LessEngine;
-import com.asual.lesscss_1_6_0.LessException;
-import com.asual.lesscss_1_6_0.LessOptions;
+import com.asual.lesscss_1_6_1.LessEngine;
+import com.asual.lesscss_1_6_1.LessException;
+import com.asual.lesscss_1_6_1.LessOptions;
 
 /**
  * @author Rostislav Hristov

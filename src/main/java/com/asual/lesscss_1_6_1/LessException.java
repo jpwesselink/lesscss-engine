@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_6_0;
+package com.asual.lesscss_1_6_1;
 
 import java.util.List;
 
