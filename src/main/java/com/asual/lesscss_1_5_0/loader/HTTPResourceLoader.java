@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss.loader;
+package com.asual.lesscss_1_5_0.loader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,13 +20,16 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * A {@link ResourceLoader} that loads JNDI resources.
+ * A naive resource loader using {@link java.net.URLConnection}.
  * 
- * @author Tim Kingman
+ * For any sort of serious usage, a proper loader needs to be implemented using
+ * Apache httpclient or similar.
+ * 
+ * @author Rafał Krzewski
  */
-public class JNDIResourceLoader extends StreamResourceLoader {
+public class HTTPResourceLoader extends StreamResourceLoader {
 
-	private static final String SCHEMA = "jndi";
+	private static final String SCHEMA = "http";
 
 	@Override
 	protected String getSchema() {

@@ -12,21 +12,30 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss.loader;
+package com.asual.lesscss_1_5_0.loader;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * A {@link ResourceLoader} that loads resources from the file system.
+ * A {@link ResourceLoader} that loads resources from a {@link ClassLoader}.
  * 
  * @author Rafał Krzewski
  */
-public class FilesystemResourceLoader extends StreamResourceLoader {
+public class ClasspathResourceLoader extends StreamResourceLoader {
 
-	private final static String SCHEMA = "file";
+	private static final String SCHEMA = "classpath";
+
+	private final ClassLoader classLoader;
+
+	/**
+	 * Creates a new {@link ClasspathResourceLoader}.
+	 * 
+	 * @param classLoader
+	 *            a {@link ClassLoader} to load resources from.
+	 */
+	public ClasspathResourceLoader(ClassLoader classLoader) {
+		this.classLoader = classLoader;
+	}
 
 	@Override
 	protected String getSchema() {
@@ -34,16 +43,10 @@ public class FilesystemResourceLoader extends StreamResourceLoader {
 	}
 
 	/**
-	 * Note that path should be absolute, otherwise the results are dependent on
-	 * the VM's {@code user.dir}.
+	 * Please note that path should NOT have a leading slash.
 	 */
 	@Override
-	protected InputStream openStream(String path) throws IOException {
-		File file = new File(path);
-		if (file.isFile() && file.canRead()) {
-			return new FileInputStream(path);
-		} else {
-			return null;
-		}
+	protected InputStream openStream(String path) {
+		return classLoader.getResourceAsStream(path);
 	}
 }

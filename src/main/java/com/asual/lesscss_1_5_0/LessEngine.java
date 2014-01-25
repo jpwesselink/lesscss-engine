@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss;
+package com.asual.lesscss_1_5_0;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,14 +34,14 @@ import org.mozilla.javascript.ScriptableObject;
 import org.mozilla.javascript.UniqueTag;
 import org.mozilla.javascript.tools.shell.Global;
 
-import com.asual.lesscss.loader.ChainedResourceLoader;
-import com.asual.lesscss.loader.ClasspathResourceLoader;
-import com.asual.lesscss.loader.CssProcessingResourceLoader;
-import com.asual.lesscss.loader.FilesystemResourceLoader;
-import com.asual.lesscss.loader.HTTPResourceLoader;
-import com.asual.lesscss.loader.JNDIResourceLoader;
-import com.asual.lesscss.loader.ResourceLoader;
-import com.asual.lesscss.loader.UnixNewlinesResourceLoader;
+import com.asual.lesscss_1_5_0.loader.ChainedResourceLoader;
+import com.asual.lesscss_1_5_0.loader.ClasspathResourceLoader;
+import com.asual.lesscss_1_5_0.loader.CssProcessingResourceLoader;
+import com.asual.lesscss_1_5_0.loader.FilesystemResourceLoader;
+import com.asual.lesscss_1_5_0.loader.HTTPResourceLoader;
+import com.asual.lesscss_1_5_0.loader.JNDIResourceLoader;
+import com.asual.lesscss_1_5_0.loader.ResourceLoader;
+import com.asual.lesscss_1_5_0.loader.UnixNewlinesResourceLoader;
 
 /**
  * @author Rostislav Hristov
@@ -85,9 +85,9 @@ public class LessEngine {
 			logger.debug("Initializing LESS Engine.");
 			ClassLoader classLoader = getClass().getClassLoader();
 			URL less = options.getLess();
-			URL env = classLoader.getResource("META-INF/env.js");
-			URL engine = classLoader.getResource("META-INF/engine.js");
-			URL cssmin = classLoader.getResource("META-INF/cssmin.js");
+			URL env = classLoader.getResource("META-INF/1.5.0/env.js");
+			URL engine = classLoader.getResource("META-INF/1.5.0/engine.js");
+			URL cssmin = classLoader.getResource("META-INF/1.5.0/cssmin.js");
 			Context cx = Context.enter();
 			logger.debug("Using implementation version: "
 					+ cx.getImplementationVersion());
