@@ -12,38 +12,34 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_5_0.loader;
+package com.asual.lesscss_1_5_1.loader;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
- * A {@link ResourceLoader} that loads resources from the file system.
+ * A naive resource loader using {@link java.net.URLConnection}.
+ * 
+ * For any sort of serious usage, a proper loader needs to be implemented using
+ * Apache httpclient or similar.
  * 
  * @author Rafał Krzewski
  */
-public class FilesystemResourceLoader extends StreamResourceLoader {
+public class HTTPResourceLoader extends StreamResourceLoader {
 
-	private final static String SCHEMA = "file";
+	private static final String SCHEMA = "http";
 
 	@Override
 	protected String getSchema() {
 		return SCHEMA;
 	}
 
-	/**
-	 * Note that path should be absolute, otherwise the results are dependent on
-	 * the VM's {@code user.dir}.
-	 */
 	@Override
 	protected InputStream openStream(String path) throws IOException {
-		File file = new File(path);
-		if (file.isFile() && file.canRead()) {
-			return new FileInputStream(path);
-		} else {
-			return null;
-		}
+		URL url = new URL(SCHEMA + ":" + path);
+		URLConnection conn = url.openConnection();
+		return conn.getInputStream();
 	}
 }

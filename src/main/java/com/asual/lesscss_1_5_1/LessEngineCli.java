@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_5_0;
+package com.asual.lesscss_1_5_1;
 
 import java.io.BufferedReader;
 import java.io.File;
