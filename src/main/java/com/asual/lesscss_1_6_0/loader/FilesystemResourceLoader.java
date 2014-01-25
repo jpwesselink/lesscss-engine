@@ -12,31 +12,38 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_5_1.loader;
+package com.asual.lesscss_1_6_0.loader;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 
 /**
- * A {@link ResourceLoader} that loads JNDI resources.
+ * A {@link ResourceLoader} that loads resources from the file system.
  * 
- * @author Tim Kingman
+ * @author Rafał Krzewski
  */
-public class JNDIResourceLoader extends StreamResourceLoader {
+public class FilesystemResourceLoader extends StreamResourceLoader {
 
-	private static final String SCHEMA = "jndi";
+	private final static String SCHEMA = "file";
 
 	@Override
 	protected String getSchema() {
 		return SCHEMA;
 	}
 
+	/**
+	 * Note that path should be absolute, otherwise the results are dependent on
+	 * the VM's {@code user.dir}.
+	 */
 	@Override
 	protected InputStream openStream(String path) throws IOException {
-		URL url = new URL(SCHEMA + ":" + path);
-		URLConnection conn = url.openConnection();
-		return conn.getInputStream();
+		File file = new File(path);
+		if (file.isFile() && file.canRead()) {
+			return new FileInputStream(path);
+		} else {
+			return null;
+		}
 	}
 }

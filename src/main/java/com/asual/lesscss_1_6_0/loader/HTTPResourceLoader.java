@@ -12,41 +12,34 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_5_1.loader;
+package com.asual.lesscss_1_6_0.loader;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
- * A {@link ResourceLoader} that loads resources from a {@link ClassLoader}.
+ * A naive resource loader using {@link java.net.URLConnection}.
+ * 
+ * For any sort of serious usage, a proper loader needs to be implemented using
+ * Apache httpclient or similar.
  * 
  * @author Rafał Krzewski
  */
-public class ClasspathResourceLoader extends StreamResourceLoader {
+public class HTTPResourceLoader extends StreamResourceLoader {
 
-	private static final String SCHEMA = "classpath";
-
-	private final ClassLoader classLoader;
-
-	/**
-	 * Creates a new {@link ClasspathResourceLoader}.
-	 * 
-	 * @param classLoader
-	 *            a {@link ClassLoader} to load resources from.
-	 */
-	public ClasspathResourceLoader(ClassLoader classLoader) {
-		this.classLoader = classLoader;
-	}
+	private static final String SCHEMA = "http";
 
 	@Override
 	protected String getSchema() {
 		return SCHEMA;
 	}
 
-	/**
-	 * Please note that path should NOT have a leading slash.
-	 */
 	@Override
-	protected InputStream openStream(String path) {
-		return classLoader.getResourceAsStream(path);
+	protected InputStream openStream(String path) throws IOException {
+		URL url = new URL(SCHEMA + ":" + path);
+		URLConnection conn = url.openConnection();
+		return conn.getInputStream();
 	}
 }

@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package com.asual.lesscss_1_5_1.loader;
+package com.asual.lesscss_1_6_0.loader;
 
 import java.io.IOException;
 import java.io.InputStream;
