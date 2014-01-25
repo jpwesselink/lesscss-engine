@@ -59,4 +59,6 @@ Icon
 .Trashes
 
 
+pom.xml.releaseBackup
+release.properties
 
