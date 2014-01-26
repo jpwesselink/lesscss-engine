@@ -4,6 +4,14 @@ LESS Engine
 LESS Engine provides basic access to the core LESS functionality. It's a core library that 
 can be used for a variety of JVM based LESS applications.
 
+### Caveat emptor
+
+Yes, in order to use multiple versions of less alongside eachother I raped the com.asual.lesscss namespace by postfixing it with the less version. Pretty? No. Works? Yes.
+It does not come with any support nor any promise that it will have the same functionality as Asual's future releases. 
+
+
+
+
 Usage
 -----
 
