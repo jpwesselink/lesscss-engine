@@ -85,9 +85,9 @@ public class LessEngine {
 			logger.debug("Initializing LESS Engine.");
 			ClassLoader classLoader = getClass().getClassLoader();
 			URL less = options.getLess();
-			URL env = classLoader.getResource("META-INF/1.6.0/env.js");
-			URL engine = classLoader.getResource("META-INF/1.6.0/engine.js");
-			URL cssmin = classLoader.getResource("META-INF/1.6.0/cssmin.js");
+			URL env = classLoader.getResource("META-INF/1.6.1/env.js");
+			URL engine = classLoader.getResource("META-INF/1.6.1/engine.js");
+			URL cssmin = classLoader.getResource("META-INF/1.6.1/cssmin.js");
 			Context cx = Context.enter();
 			logger.debug("Using implementation version: "
 					+ cx.getImplementationVersion());
