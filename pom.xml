@@ -19,9 +19,9 @@
 	</licenses>
 
 	<scm>
-		<url>http://github.com/asual/lesscss-engine</url>
-		<connection>scm:git:git://github.com:asual/lesscss-engine.git</connection>
-		<developerConnection>scm:git:git@github.com:asual/lesscss-engine.git</developerConnection>
+		<url>http://github.com/jpwesselink/lesscss-engine</url>
+		<connection>scm:git:git://github.com:jpwesselink/lesscss-engine.git</connection>
+		<developerConnection>scm:git:git@github.com:jpwesselink/lesscss-engine.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
